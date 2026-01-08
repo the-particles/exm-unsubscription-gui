@@ -2,11 +2,21 @@ import { useEffect, useState } from "react";
 import { ServiceWorkerContext } from "./use-service-worker";
 import { toast } from "sonner";
 import { Toaster } from "@pars/shared/components/ui/sonner";
-import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@pars/shared/components/ui/alert-dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@pars/shared/components/ui/alert-dialog";
 
 type ServiceWorkerProviderProps = {
   children: React.ReactNode;
 };
+
+const HAS_NEW_WORKER_KEY = "HAS_NEW_WORKER_KEY";
 
 const handleRefresh = () => {
   if (typeof window !== "undefined") {
@@ -14,9 +24,14 @@ const handleRefresh = () => {
   }
 };
 
-const ServiceWorkerProvider = ({ children, ...props }: ServiceWorkerProviderProps) => {
+const ServiceWorkerProvider = ({
+  children,
+  ...props
+}: ServiceWorkerProviderProps) => {
   const [isReadyOffline, setIsReadyOffline] = useState(false);
-  const [hasNewWorker, setHasNewWorker] = useState(false);
+  const [hasNewWorker, setHasNewWorker] = useState(() =>
+    Boolean(localStorage.getItem(HAS_NEW_WORKER_KEY))
+  );
   const [newWorker, setNewWorker] = useState<ServiceWorker | null>(null);
 
   useEffect(() => {
@@ -31,6 +46,7 @@ const ServiceWorkerProvider = ({ children, ...props }: ServiceWorkerProviderProp
                 installingWorker.state === "installed" &&
                 registration.waiting
               ) {
+                localStorage.setItem(HAS_NEW_WORKER_KEY, "true");
                 setHasNewWorker(true);
                 setNewWorker(installingWorker);
               }
@@ -45,6 +61,7 @@ const ServiceWorkerProvider = ({ children, ...props }: ServiceWorkerProviderProp
 
       navigator.serviceWorker.addEventListener("message", (event) => {
         if (event.data === "SKIP_WAITING_ACK") {
+          localStorage.removeItem(HAS_NEW_WORKER_KEY);
           handleRefresh();
           return;
         }
@@ -66,7 +83,7 @@ const ServiceWorkerProvider = ({ children, ...props }: ServiceWorkerProviderProp
       value={{ isReadyOffline, hasNewWorker }}
     >
       {children}
-      
+
       <Toaster position={"bottom-center"} />
       <AlertDialog open={hasNewWorker} onOpenChange={setHasNewWorker}>
         <AlertDialogContent>
@@ -85,6 +102,6 @@ const ServiceWorkerProvider = ({ children, ...props }: ServiceWorkerProviderProp
       </AlertDialog>
     </ServiceWorkerContext.Provider>
   );
-}
+};
 
 export default ServiceWorkerProvider;

@@ -51,7 +51,7 @@ const RootLayout = () => {
         className="w-full"
         ref={scrollRef}
       >
-        <div className="flex flex-col items-center px-10 pt-5 pb-28 relative w-full">
+        <div className="flex flex-col items-center px-5 pt-5 pb-28 relative w-full">
           <Outlet />
         </div>
       </ScrollArea>

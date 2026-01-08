@@ -1,10 +1,20 @@
 import { useServiceWorker } from "@pars/providers/use-service-worker";
-import { CloudAlert, CloudCheck } from "lucide-react";
+import { CloudAlert, CloudCheck, CloudDownload } from "lucide-react";
 
 const OfflineStatus = () => {
-  const { isReadyOffline } = useServiceWorker();
+  const { isReadyOffline, hasNewWorker } = useServiceWorker();
 
-  return <div>{isReadyOffline ? <CloudCheck /> : <CloudAlert />}</div>;
+  return (
+    <div>
+      {hasNewWorker ? (
+        <CloudDownload />
+      ) : isReadyOffline ? (
+        <CloudCheck />
+      ) : (
+        <CloudAlert />
+      )}
+    </div>
+  );
 };
 
 export default OfflineStatus;
