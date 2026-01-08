@@ -60,7 +60,7 @@ function Button({
       data-size={size}
       className={
         withChildrenStyle
-          ? ""
+          ? "select-none"
           : cn(buttonVariants({ variant, size, className }))
       }
       onClick={_onClick}

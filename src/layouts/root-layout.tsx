@@ -46,8 +46,12 @@ const RootLayout = () => {
         </div>
         {Action ? Action : <></>}
       </div>
-      <ScrollArea style={{ height: `${scrollAreaHeight}px` }} ref={scrollRef}>
-        <div className="flex flex-col items-center px-10 pt-5 pb-28">
+      <ScrollArea
+        style={{ height: `${scrollAreaHeight}px` }}
+        className="w-full"
+        ref={scrollRef}
+      >
+        <div className="flex flex-col items-center px-10 pt-5 pb-28 relative w-full">
           <Outlet />
         </div>
       </ScrollArea>
