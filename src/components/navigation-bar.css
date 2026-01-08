@@ -1,0 +1,29 @@
+:root {
+  --navigation-bar-background: linear-gradient(
+    0deg,
+    rgba(231, 233, 234, 1) 50%,
+    rgba(231, 233, 234, 0) 100%
+  );
+}
+
+.dark {
+  --navigation-bar-background: linear-gradient(
+    0deg,
+    rgba(10, 14, 18, 1) 10%,
+    rgba(10, 14, 18, 0) 100%
+  );
+}
+
+.navigation-bar {
+  background: var(--navigation-bar-background);
+}
+
+.navigation-item::after {
+  display: block;
+  content: attr(title);
+  font-weight: bold;
+  height: 1px;
+  color: transparent;
+  overflow: hidden;
+  visibility: hidden;
+}
