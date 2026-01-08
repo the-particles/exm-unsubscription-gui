@@ -73,7 +73,7 @@ const ServiceWorkerProvider = ({
 
   const skipWaiting = () => {
     if (newWorker) {
-      newWorker.postMessage({ type: "SKIP_WAITING", data: { key: "value" } });
+      newWorker.postMessage({ type: "SKIP_WAITING" });
     }
   };
 
