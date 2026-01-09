@@ -3,6 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/unsubscription.svg" />
+    <style>
+      :root {
+        --safe-area-top: env(safe-area-inset-top);
+      }
+
+      #root {
+        background-color: #0a0e12;
+        min-height: 100vh;
+
+        padding-top: var(--safe-area-top);
+      }
+    </style>
     <meta
       name="theme-color"
       content="#0a0e12"
@@ -243,10 +255,10 @@
       media="screen and (device-width: 744px) and (device-height: 1133px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
       href="images/8.3__iPad_Mini_portrait.png"
     />
-    
+
     <title>Unsubscription</title>
   </head>
-  <body style="background-color: #0a0e12;">
+  <body style="background-color: #0a0e12">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

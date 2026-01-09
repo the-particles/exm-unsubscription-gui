@@ -20,8 +20,6 @@ export default defineConfig({
         name: "Unsubscription",
         short_name: "Unsubscription",
         description: "EXM's (Expense Management) subscriptions manager",
-        theme_color: "#0a0e12",
-        background_color: "#0a0e12",
         display: "standalone",
         icons: [
           {
