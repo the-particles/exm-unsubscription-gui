@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { ScrollArea } from '@pars/shared/components/ui/scroll-area'
+import { useDimension } from '@pars/providers/use-dimension'
 import { useHeader } from '@pars/providers/use-header'
 import { useNavigation } from '@pars/providers/use-navigation'
 import NavigationBar from '@pars/components/navigation-bar'
@@ -31,6 +32,7 @@ const RootLayout = () => {
 
   const { current } = useNavigation()
   const { Action } = useHeader()
+  const { navigationBarHeight } = useDimension()
 
   return (
     <main className="flex flex-col items-center w-full h-dvh overflow-hidden">
@@ -52,7 +54,10 @@ const RootLayout = () => {
         className="w-full scroll-area"
         ref={scrollRef}
       >
-        <div className="flex flex-col items-center px-5 pt-5 pb-28 relative w-full">
+        <div
+          style={{ paddingBottom: `${navigationBarHeight + 20}px` }}
+          className="flex flex-col items-center px-5 pt-5 relative w-full"
+        >
           <Outlet />
         </div>
       </ScrollArea>

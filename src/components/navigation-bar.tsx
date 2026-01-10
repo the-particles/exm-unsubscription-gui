@@ -1,6 +1,8 @@
+import { useEffect, useRef } from 'react'
 import { ChartPie, CreditCard, Settings } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '@pars/shared/components/ui/button'
+import { useDimension } from '@pars/providers/use-dimension'
 import { useNavigation } from '@pars/providers/use-navigation'
 import './navigation-bar.css'
 
@@ -32,13 +34,13 @@ const NavigationItem = ({
 
   const isCurrentNavigation = current === name
 
-  const onNavigate = () => {
+  const _onNavigate = () => {
     setCurrent(name)
     navigate(href)
   }
 
   return (
-    <Button asChild withChildrenStyle onClick={onNavigate}>
+    <Button asChild withChildrenStyle onClick={_onNavigate}>
       <div
         className={`flex flex-col justify-center items-center gap-1 transition-transform active:scale-90 active:transition-[transform_0.25s_ease] ${
           isCurrentNavigation && 'text-teal-400'
@@ -52,8 +54,31 @@ const NavigationItem = ({
 }
 
 const NavigationBar = () => {
+  const navigationBarRef = useRef<HTMLDivElement>(null)
+
+  const { setNavigationBarHeight } = useDimension()
+
+  useEffect(() => {
+    const calculateHeight = () => {
+      if (navigationBarRef.current) {
+        setNavigationBarHeight(
+          navigationBarRef.current.getBoundingClientRect().height,
+        )
+      }
+    }
+
+    calculateHeight()
+
+    window.addEventListener('resize', calculateHeight)
+
+    return () => window.removeEventListener('resize', calculateHeight)
+  }, [setNavigationBarHeight])
+
   return (
-    <nav className="fixed bottom-0 left-0 w-full h-28 flex justify-between items-center p-5 navigation-bar">
+    <nav
+      ref={navigationBarRef}
+      className="fixed bottom-0 left-0 w-full h-28 flex justify-between items-center p-5 navigation-bar"
+    >
       <div className="bg-background/50 rounded-full flex justify-around items-center w-full py-3 border backdrop-blur-lg">
         {NAVIGATION_ITEMS.map((item) => (
           <NavigationItem key={item.name} {...item} />
