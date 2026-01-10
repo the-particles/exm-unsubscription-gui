@@ -23,6 +23,14 @@ const handleRefresh = () => {
     window.location.reload()
   }
 }
+const hideSplashScreen = () =>
+  setTimeout(() => {
+    const splashScreen = document.getElementById('splash-screen')
+    if (splashScreen) {
+      splashScreen.style.opacity = '0'
+      splashScreen.style.visibility = 'hidden'
+    }
+  }, 750)
 
 const PWAProvider = ({ children, ...props }: PWAProviderProps) => {
   const [isReadyOffline, setIsReadyOffline] = useState(false)
@@ -68,14 +76,14 @@ const PWAProvider = ({ children, ...props }: PWAProviderProps) => {
     }
   }, [])
   useEffect(() => {
-    if (isReadyOffline) {
-      setTimeout(() => {
-        const splashScreen = document.getElementById('splash-screen')
-        if (splashScreen) {
-          splashScreen.style.opacity = '0'
-          splashScreen.style.visibility = 'hidden'
-        }
-      }, 750)
+    const isPWA =
+      'serviceWorker' in navigator &&
+      window.matchMedia('(display-mode: standalone)').matches
+
+    if (!isPWA || isReadyOffline) {
+      const timeoutId = hideSplashScreen()
+
+      return () => clearTimeout(timeoutId)
     }
   }, [isReadyOffline])
 

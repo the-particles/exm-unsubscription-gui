@@ -5,6 +5,7 @@ import { useHeader } from '@pars/providers/use-header'
 import { useNavigation } from '@pars/providers/use-navigation'
 import NavigationBar from '@pars/components/navigation-bar'
 import RefreshingPull from '@pars/components/refreshing-pull'
+import './root-layout.css'
 
 const RootLayout = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -48,7 +49,7 @@ const RootLayout = () => {
       </div>
       <ScrollArea
         style={{ height: `${scrollAreaHeight}px` }}
-        className="w-full"
+        className="w-full main"
         ref={scrollRef}
       >
         <div className="flex flex-col items-center px-5 pt-5 pb-28 relative w-full">
