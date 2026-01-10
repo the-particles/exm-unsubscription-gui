@@ -2,7 +2,7 @@
   --subscription-card-background: #161922;
   --subscription-card-gradient-background: linear-gradient(
     180deg,
-    rgba(22, 25, 34, 1) 0%,
+    rgba(22, 25, 34, 1) 30%,
     rgba(27, 31, 43, 1) 100%
   );
 }

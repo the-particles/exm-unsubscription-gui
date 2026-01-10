@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { Subscription } from '@pars/interfaces/subscription'
+import { Plus } from 'lucide-react'
 import { Button } from '@pars/shared/components/ui/button'
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
+  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
@@ -37,15 +38,26 @@ const SubscriptionCreation = ({ onCreate }: SubscriptionCreationProps) => {
     onCreate({ name: name })
     setOpen(false)
   }
+  const _reset = () => {
+    setName('')
+  }
+
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerTrigger>Open</DrawerTrigger>
+    <Drawer open={open} onOpenChange={setOpen} onClose={_reset}>
+      <DrawerTrigger asChild>
+        <Button size="icon-lg" variant="ghost">
+          <Plus className="size-8" />
+        </Button>
+      </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>Track new subscription</DrawerTitle>
+          <DrawerDescription>
+            Add new subscription to start tracking now
+          </DrawerDescription>
         </DrawerHeader>
 
-        <form className="w-full">
+        <form className="w-full px-5 my-5">
           <FieldGroup>
             <FieldSet>
               <Field>
@@ -65,10 +77,7 @@ const SubscriptionCreation = ({ onCreate }: SubscriptionCreationProps) => {
         </form>
 
         <DrawerFooter>
-          <Button onClick={_onCreate}>Track</Button>
-          <DrawerClose>
-            <Button variant="outline">Cancel</Button>
-          </DrawerClose>
+          <Button onClick={_onCreate}>Add</Button>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
@@ -109,7 +118,7 @@ const Subscriptions = () => {
   return (
     <>
       <div className="w-full">
-        <h1 className="font-medium text-lg">Active Subscriptions</h1>
+        <h1 className="font-semibold text-lg">Active Subscriptions</h1>
         <div className="flex flex-col gap-3 my-5">
           {subscriptions.map((subscription) => (
             <SubscriptionCard
