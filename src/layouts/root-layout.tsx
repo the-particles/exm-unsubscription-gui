@@ -34,6 +34,8 @@ const RootLayout = () => {
   const { Action } = useHeader()
   const { navigationBarHeight } = useDimension()
 
+  console.log(navigationBarHeight)
+
   return (
     <main className="flex flex-col items-center w-full h-dvh overflow-hidden">
       <RefreshingPull />
@@ -55,7 +57,7 @@ const RootLayout = () => {
         ref={scrollRef}
       >
         <div
-          style={{ paddingBottom: `${navigationBarHeight + 20}px` }}
+          style={{ paddingBottom: `${navigationBarHeight + 40}px` }}
           className="flex flex-col items-center px-5 pt-5 relative w-full"
         >
           <Outlet />
