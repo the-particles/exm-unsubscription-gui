@@ -292,6 +292,15 @@
           transform: rotate(360deg);
         }
       }
+
+      :root {
+        --safe-area-top: env(safe-area-inset-top);
+      }
+
+      #root {
+        min-height: 100dvh;
+        padding-top: var(--safe-area-top);
+      }
     </style>
     <div id="splash-screen">
       <div>
