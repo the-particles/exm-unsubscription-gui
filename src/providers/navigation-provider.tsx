@@ -1,21 +1,6 @@
-import {
-  type Dispatch,
-  type SetStateAction,
-  createContext,
-  useState,
-} from 'react'
+import { useState } from 'react'
+import NavigationContext from '@pars/contexts/navigation-context'
 import type { ProviderProps } from '@pars/interfaces/provider'
-
-interface NavigationState {
-  current: string
-  setCurrent: Dispatch<SetStateAction<string>>
-}
-
-const INITIAL_STATE: NavigationState = {
-  current: 'dashboard',
-  setCurrent: () => {},
-}
-export const NavigationContext = createContext<NavigationState>(INITIAL_STATE)
 
 const NavigationProvider = ({ children }: ProviderProps) => {
   // States

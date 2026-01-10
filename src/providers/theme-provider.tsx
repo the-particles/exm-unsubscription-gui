@@ -1,22 +1,13 @@
-import { createContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import ThemeContext from '@pars/contexts/theme-provider'
 import type { ProviderProps } from '@pars/interfaces/provider'
 
 const THEME_KEY = 'subscription-ui-theme'
 
 type Theme = 'dark' | 'light' | 'system'
-interface ThemeState {
-  theme: Theme
-  setTheme: (theme: Theme) => void
-}
 interface ThemeProviderProps extends ProviderProps {
   defaultTheme?: Theme
 }
-
-const INITIAL_STATE: ThemeState = {
-  theme: 'system',
-  setTheme: () => null,
-}
-export const ThemeContext = createContext<ThemeState>(INITIAL_STATE)
 
 const ThemeProvider = ({
   children,

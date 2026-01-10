@@ -42,7 +42,7 @@ const RootLayout = () => {
       <RefreshingPull />
       <div
         ref={headerRef}
-        className="p-5 shrink-0 w-full flex justify-between items-center"
+        className="p-5 bg-background text-foreground shrink-0 w-full flex justify-between items-center"
       >
         <div>
           <h1 className="font-semibold text-2xl capitalize">{current}</h1>

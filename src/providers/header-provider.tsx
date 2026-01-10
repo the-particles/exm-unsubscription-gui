@@ -1,23 +1,6 @@
-import {
-  type ComponentType,
-  type Dispatch,
-  type SetStateAction,
-  createContext,
-  useState,
-} from 'react'
+import { type ComponentType, useState } from 'react'
+import HeaderContext from '@pars/contexts/header-context'
 import type { ProviderProps } from '@pars/interfaces/provider'
-
-export interface HeaderState {
-  Action: ComponentType | null
-  setAction: Dispatch<SetStateAction<ComponentType | null>>
-}
-
-const INITIAL_STATE: HeaderState = {
-  Action: null,
-  setAction: () => {},
-}
-
-export const HeaderContext = createContext<HeaderState>(INITIAL_STATE)
 
 const HeaderProvider = ({ children }: ProviderProps) => {
   // States

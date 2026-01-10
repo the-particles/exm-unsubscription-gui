@@ -1,4 +1,5 @@
-import { createContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import PWAContext from '@pars/contexts/pwa-context'
 import type { ProviderProps } from '@pars/interfaces/provider'
 import { refreshPage } from '@pars/utils/document'
 import { toast } from 'sonner'
@@ -23,17 +24,6 @@ const hideSplashScreen = () =>
       splashScreen.style.visibility = 'hidden'
     }
   }, SPLASH_SCREEN_TIMEOUT)
-
-interface PWAState {
-  isReadyOffline: boolean
-  hasNewWorker: boolean
-}
-
-const INITIAL_STATE: PWAState = {
-  isReadyOffline: false,
-  hasNewWorker: false,
-}
-export const PWAContext = createContext<PWAState>(INITIAL_STATE)
 
 const PWAProvider = ({ children }: ProviderProps) => {
   // States

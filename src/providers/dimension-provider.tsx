@@ -1,21 +1,6 @@
-import {
-  type Dispatch,
-  type SetStateAction,
-  createContext,
-  useState,
-} from 'react'
+import { useState } from 'react'
+import DimensionContext from '@pars/contexts/dimension-context'
 import type { ProviderProps } from '@pars/interfaces/provider'
-
-interface DimensionState {
-  navigationBarHeight: number
-  setNavigationBarHeight: Dispatch<SetStateAction<number>>
-}
-
-const INITIAL_STATE: DimensionState = {
-  navigationBarHeight: 0,
-  setNavigationBarHeight: () => {},
-}
-export const DimensionContext = createContext<DimensionState>(INITIAL_STATE)
 
 const DimensionProvider = ({ children }: ProviderProps) => {
   // States

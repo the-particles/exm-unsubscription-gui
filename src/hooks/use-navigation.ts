@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { NavigationContext } from '@pars/providers/navigation-provider'
+import NavigationContext from '@pars/contexts/navigation-context'
 
 export const useNavigation = () => {
   const context = useContext(NavigationContext)

@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { DimensionContext } from '@pars/providers/dimension-provider'
+import DimensionContext from '@pars/contexts/dimension-context'
 
 export const useDimension = () => {
   const context = useContext(DimensionContext)
