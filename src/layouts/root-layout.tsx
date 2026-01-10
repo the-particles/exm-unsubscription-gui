@@ -1,35 +1,35 @@
-import NavigationBar from "@pars/components/navigation-bar";
-import RefreshingPull from "@pars/components/refreshing-pull";
-import { useHeader } from "@pars/providers/use-header";
-import { useNavigation } from "@pars/providers/use-navigation";
-import { ScrollArea } from "@pars/shared/components/ui/scroll-area";
-import { useEffect, useRef, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { useEffect, useRef, useState } from 'react'
+import { Outlet } from 'react-router-dom'
+import { ScrollArea } from '@pars/shared/components/ui/scroll-area'
+import { useHeader } from '@pars/providers/use-header'
+import { useNavigation } from '@pars/providers/use-navigation'
+import NavigationBar from '@pars/components/navigation-bar'
+import RefreshingPull from '@pars/components/refreshing-pull'
 
 const RootLayout = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const headerRef = useRef<HTMLDivElement>(null)
 
-  const [scrollAreaHeight, setScrollAreaHeight] = useState<number>(0);
+  const [scrollAreaHeight, setScrollAreaHeight] = useState<number>(0)
 
   useEffect(() => {
     const calculateHeight = () => {
       if (headerRef.current && scrollRef.current) {
         setScrollAreaHeight(
-          window.innerHeight - headerRef.current.getBoundingClientRect().height
-        );
+          window.innerHeight - headerRef.current.getBoundingClientRect().height,
+        )
       }
-    };
+    }
 
-    calculateHeight();
+    calculateHeight()
 
-    window.addEventListener("resize", calculateHeight);
+    window.addEventListener('resize', calculateHeight)
 
-    return () => window.removeEventListener("resize", calculateHeight);
-  }, []);
+    return () => window.removeEventListener('resize', calculateHeight)
+  }, [])
 
-  const { current } = useNavigation();
-  const { Action } = useHeader();
+  const { current } = useNavigation()
+  const { Action } = useHeader()
 
   return (
     <main className="flex flex-col items-center w-full h-dvh overflow-hidden">
@@ -57,7 +57,7 @@ const RootLayout = () => {
       </ScrollArea>
       <NavigationBar />
     </main>
-  );
-};
+  )
+}
 
-export default RootLayout;
+export default RootLayout

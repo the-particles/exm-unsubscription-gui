@@ -1,19 +1,19 @@
-import RootLayout from "@pars/layouts/root-layout";
-import { Navigate, createBrowserRouter } from "react-router-dom";
+import RootLayout from '@pars/layouts/root-layout'
+import { Navigate, createBrowserRouter } from 'react-router-dom'
 
-const LazyHome = import("./pages/home").then((module) => ({
+const LazyHome = import('./pages/home').then((module) => ({
   Component: module.default,
-}));
-const LazySubscriptions = import("./pages/subscriptions").then((module) => ({
+}))
+const LazySubscriptions = import('./pages/subscriptions').then((module) => ({
   Component: module.default,
-}));
-const LazySettings = import("./pages/settings").then((module) => ({
+}))
+const LazySettings = import('./pages/settings').then((module) => ({
   Component: module.default,
-}));
+}))
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <RootLayout />,
     children: [
       {
@@ -21,19 +21,19 @@ const router = createBrowserRouter([
         lazy: () => LazyHome,
       },
       {
-        path: "/subscriptions",
+        path: '/subscriptions',
         lazy: () => LazySubscriptions,
       },
       {
-        path: "/settings",
+        path: '/settings',
         lazy: () => LazySettings,
       },
     ],
   },
   {
-    path: "*",
+    path: '*',
     element: <Navigate to="/" replace />,
   },
-]);
+])
 
-export default router;
+export default router

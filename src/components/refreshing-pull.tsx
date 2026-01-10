@@ -1,21 +1,21 @@
-import { RotateCw } from "lucide-react";
-import { usePullToRefresh } from "use-pull-to-refresh";
+import { RotateCw } from 'lucide-react'
+import { usePullToRefresh } from 'use-pull-to-refresh'
 
-const MAXIMUM_PULL_LENGTH = 240;
-const REFRESH_THRESHOLD = 180;
+const MAXIMUM_PULL_LENGTH = 240
+const REFRESH_THRESHOLD = 180
 
 const handleRefresh = () => {
-  if (typeof window !== "undefined") {
-    window.location.reload();
+  if (typeof window !== 'undefined') {
+    window.location.reload()
   }
-};
+}
 
 const RefreshingPull = () => {
   const { isRefreshing, pullPosition } = usePullToRefresh({
     onRefresh: handleRefresh,
     maximumPullLength: MAXIMUM_PULL_LENGTH,
     refreshThreshold: REFRESH_THRESHOLD,
-  });
+  })
 
   return (
     <div
@@ -27,14 +27,14 @@ const RefreshingPull = () => {
     >
       <div
         className={`h-full w-full flex justify-center items-center ${
-          isRefreshing ? "animate-spin" : ""
+          isRefreshing ? 'animate-spin' : ''
         }`}
         style={!isRefreshing ? { transform: `rotate(${pullPosition}deg)` } : {}}
       >
         <RotateCw />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default RefreshingPull;
+export default RefreshingPull

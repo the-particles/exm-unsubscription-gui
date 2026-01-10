@@ -1,10 +1,10 @@
-import { useHeader } from "@pars/providers/use-header";
-import { useEffect } from "react";
+import { useEffect } from 'react'
+import { useHeader } from '@pars/providers/use-header'
 
 const Subscriptions = () => {
-  const { setAction } = useHeader();
+  const { setAction } = useHeader()
 
-  useEffect(() => setAction(null), [setAction]);
+  useEffect(() => setAction(null), [setAction])
 
   return (
     <>
@@ -12,7 +12,7 @@ const Subscriptions = () => {
         <h1 className="font-medium text-lg">Active Subscriptions</h1>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Subscriptions;
+export default Subscriptions

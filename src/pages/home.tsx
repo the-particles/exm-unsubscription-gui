@@ -1,10 +1,10 @@
-import { useHeader } from "@pars/providers/use-header";
-import { useEffect } from "react";
+import { useEffect } from 'react'
+import { useHeader } from '@pars/providers/use-header'
 
 const Home = () => {
-  const { setAction } = useHeader();
+  const { setAction } = useHeader()
 
-  useEffect(() => setAction(null), [setAction]);
+  useEffect(() => setAction(null), [setAction])
 
   return (
     <div>
@@ -74,7 +74,7 @@ const Home = () => {
       Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa
       nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

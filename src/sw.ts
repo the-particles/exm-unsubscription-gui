@@ -1,46 +1,46 @@
 /// <reference lib="webworker" />
-import { precacheAndRoute } from "workbox-precaching";
-import { clientsClaim } from "workbox-core";
+import { clientsClaim } from 'workbox-core'
+import { precacheAndRoute } from 'workbox-precaching'
 
-declare const self: ServiceWorkerGlobalScope;
+declare const self: ServiceWorkerGlobalScope
 
-precacheAndRoute(self.__WB_MANIFEST);
+precacheAndRoute(self.__WB_MANIFEST)
 
-clientsClaim();
+clientsClaim()
 
-self.addEventListener("push", (event) => {
-  const data = event.data?.text();
+self.addEventListener('push', (event) => {
+  const data = event.data?.text()
 
   self.clients.matchAll().then((clients) => {
     clients.forEach((client) => {
-      client.postMessage(data);
-    });
-  });
-});
+      client.postMessage(data)
+    })
+  })
+})
 
-self.addEventListener("message", (event) => {
-  if (event.data && event.data.type === "SKIP_WAITING") {
-    self.skipWaiting();
-    return;
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting()
+    return
   }
 
-  if (Notification.permission === "granted") {
-    self.registration.showNotification("Service Worker Message", {
+  if (Notification.permission === 'granted') {
+    self.registration.showNotification('Service Worker Message', {
       body: `Received message: ${event.data}`,
-    });
+    })
   } else {
-    Notification.requestPermission();
+    Notification.requestPermission()
   }
-});
+})
 
-self.addEventListener("activate", (event) => {
+self.addEventListener('activate', (event) => {
   event.waitUntil(
     self.clients.claim().then(() => {
       self.clients.matchAll().then((clients) => {
         clients.forEach((client) => {
-          client.postMessage("SKIP_WAITING_ACK");
-        });
-      });
-    })
-  );
-});
+          client.postMessage('SKIP_WAITING_ACK')
+        })
+      })
+    }),
+  )
+})

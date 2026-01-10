@@ -1,7 +1,7 @@
-export {};
+export {}
 
 declare global {
   interface Navigator {
-    standalone?: boolean;
+    standalone?: boolean
   }
 }
