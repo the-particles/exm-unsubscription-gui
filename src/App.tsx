@@ -1,8 +1,8 @@
 import { RouterProvider } from 'react-router-dom'
-import HeaderProvider from './providers/header-provider'
-import NavigationProvider from './providers/navigation-provider'
-import PWAProvider from './providers/pwa-provider'
-import ThemeProvider from './providers/theme-provider'
+import HeaderProvider from '@pars/providers/header-provider'
+import NavigationProvider from '@pars/providers/navigation-provider'
+import PWAProvider from '@pars/providers/pwa-provider'
+import ThemeProvider from '@pars/providers/theme-provider'
 import router from './routes'
 
 const App = () => {
