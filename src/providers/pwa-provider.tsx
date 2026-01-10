@@ -61,7 +61,6 @@ const PWAProvider = ({ children }: ProviderProps) => {
 
       navigator.serviceWorker.addEventListener('message', (event) => {
         if (event.data === 'SKIP_WAITING_ACK') {
-          localStorage.removeItem(HAS_NEW_UPDATE_KEY)
           refreshPage()
           return
         }
@@ -87,6 +86,7 @@ const PWAProvider = ({ children }: ProviderProps) => {
     if (newWorker) {
       newWorker.postMessage({ type: 'SKIP_WAITING' })
     }
+    localStorage.removeItem(HAS_NEW_UPDATE_KEY)
   }
 
   return (

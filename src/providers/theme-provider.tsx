@@ -43,6 +43,25 @@ const ThemeProvider = ({
 
     root.classList.add(theme)
   }, [theme])
+  useEffect(() => {
+    const handleThemeChange = (event: MediaQueryListEvent) => {
+      const root = window.document.documentElement
+      const _theme = event.matches ? 'dark' : 'light'
+
+      root.classList.add(_theme)
+    }
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+
+    if (!darkModeMediaQuery.addEventListener) {
+      darkModeMediaQuery.addListener(handleThemeChange)
+      return () => darkModeMediaQuery.removeListener(handleThemeChange)
+    }
+
+    darkModeMediaQuery.addEventListener('change', handleThemeChange)
+    return () => {
+      darkModeMediaQuery.removeEventListener('change', handleThemeChange)
+    }
+  }, [])
 
   return (
     <ThemeContext.Provider value={_value}>{children}</ThemeContext.Provider>
