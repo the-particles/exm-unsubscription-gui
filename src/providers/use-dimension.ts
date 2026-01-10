@@ -22,7 +22,7 @@ export const useDimension = () => {
 
   if (context === undefined) {
     throw new Error(
-      'useServiceWorker must be used within a ServiceWorkerProvider',
+      `${useDimension.name} must be used within a its corresponding context`,
     )
   }
   return context

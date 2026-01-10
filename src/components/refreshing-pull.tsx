@@ -1,18 +1,14 @@
+import { refreshPage } from '@pars/utils/document'
 import { RotateCw } from 'lucide-react'
 import { usePullToRefresh } from 'use-pull-to-refresh'
 
 const MAXIMUM_PULL_LENGTH = 240
 const REFRESH_THRESHOLD = 180
 
-const handleRefresh = () => {
-  if (typeof window !== 'undefined') {
-    window.location.reload()
-  }
-}
-
 const RefreshingPull = () => {
+  // Hooks
   const { isRefreshing, pullPosition } = usePullToRefresh({
-    onRefresh: handleRefresh,
+    onRefresh: refreshPage,
     maximumPullLength: MAXIMUM_PULL_LENGTH,
     refreshThreshold: REFRESH_THRESHOLD,
   })

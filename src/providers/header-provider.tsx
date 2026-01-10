@@ -1,4 +1,4 @@
-import { type ReactNode, useState } from 'react'
+import { type ComponentType, type ReactNode, useState } from 'react'
 import { HeaderContext } from './use-header'
 
 interface HeaderProviderProps {
@@ -6,7 +6,8 @@ interface HeaderProviderProps {
 }
 
 const HeaderProvider = ({ children }: HeaderProviderProps) => {
-  const [Action, setAction] = useState<ReactNode | null>(null)
+  // States
+  const [Action, setAction] = useState<ComponentType | null>(null)
 
   return (
     <HeaderContext.Provider value={{ Action, setAction }}>

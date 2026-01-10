@@ -1,22 +1,31 @@
-import { useEffect, useState } from 'react'
+import { type ReactNode, useEffect, useState } from 'react'
 import { type Theme, ThemeContext } from './use-theme'
 
-type ThemeProviderProps = {
-  children: React.ReactNode
+const THEME_KEY = 'ui-theme'
+
+interface ThemeProviderProps {
+  children: ReactNode
   defaultTheme?: Theme
-  storageKey?: string
 }
 
 const ThemeProvider = ({
   children,
   defaultTheme = 'system',
-  storageKey = 'vite-ui-theme',
   ...props
 }: ThemeProviderProps) => {
+  // States
   const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme,
+    () => (localStorage.getItem(THEME_KEY) as Theme) || defaultTheme,
   )
+  const _value = {
+    theme,
+    setTheme: (theme: Theme) => {
+      localStorage.setItem(THEME_KEY, theme)
+      setTheme(theme)
+    },
+  }
 
+  // Effects
   useEffect(() => {
     const root = window.document.documentElement
 
@@ -35,16 +44,8 @@ const ThemeProvider = ({
     root.classList.add(theme)
   }, [theme])
 
-  const value = {
-    theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme)
-      setTheme(theme)
-    },
-  }
-
   return (
-    <ThemeContext.Provider {...props} value={value}>
+    <ThemeContext.Provider {...props} value={_value}>
       {children}
     </ThemeContext.Provider>
   )

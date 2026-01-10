@@ -3,9 +3,11 @@ import { useHeader } from '@pars/providers/use-header'
 import OfflineStatus from '@pars/components/offline-status'
 
 const Settings = () => {
+  // States
   const { setAction } = useHeader()
 
-  useEffect(() => setAction(<OfflineStatus />), [setAction])
+  // Effects
+  useEffect(() => setAction(() => OfflineStatus), [setAction])
 
   return <div>Settings Page works</div>
 }

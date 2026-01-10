@@ -9,11 +9,19 @@ import RefreshingPull from '@pars/components/refreshing-pull'
 import './root-layout.css'
 
 const RootLayout = () => {
+  // Refs
   const scrollRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
 
+  // Contexts
+  const { current } = useNavigation()
+  const { Action } = useHeader()
+  const { navigationBarHeight } = useDimension()
+
+  // States
   const [scrollAreaHeight, setScrollAreaHeight] = useState<number>(0)
 
+  // Effects
   useEffect(() => {
     const calculateHeight = () => {
       if (headerRef.current && scrollRef.current) {
@@ -24,17 +32,10 @@ const RootLayout = () => {
     }
 
     calculateHeight()
-
     window.addEventListener('resize', calculateHeight)
 
     return () => window.removeEventListener('resize', calculateHeight)
   }, [])
-
-  const { current } = useNavigation()
-  const { Action } = useHeader()
-  const { navigationBarHeight } = useDimension()
-
-  console.log(navigationBarHeight)
 
   return (
     <main className="flex flex-col items-center w-full h-dvh overflow-hidden">
@@ -49,7 +50,7 @@ const RootLayout = () => {
             Your subscription overview
           </span>
         </div>
-        {Action ? Action : <></>}
+        {Action ? <Action /> : <></>}
       </div>
       <ScrollArea
         style={{ height: `${scrollAreaHeight}px` }}

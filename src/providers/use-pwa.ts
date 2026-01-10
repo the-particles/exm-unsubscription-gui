@@ -17,7 +17,7 @@ export const usePWA = () => {
 
   if (context === undefined) {
     throw new Error(
-      'useServiceWorker must be used within a ServiceWorkerProvider',
+      `${usePWA.name} must be used within a its corresponding context`,
     )
   }
   return context

@@ -1,14 +1,14 @@
 import {
+  type ComponentType,
   type Dispatch,
-  type ReactNode,
   type SetStateAction,
   createContext,
   useContext,
 } from 'react'
 
 export interface HeaderState {
-  Action: ReactNode | null
-  setAction: Dispatch<SetStateAction<ReactNode | null>>
+  Action: ComponentType | null
+  setAction: Dispatch<SetStateAction<ComponentType | null>>
 }
 
 const INITIAL_STATE: HeaderState = {
@@ -22,7 +22,9 @@ export const useHeader = () => {
   const context = useContext(HeaderContext)
 
   if (context === undefined)
-    throw new Error('useHeader must be used within a HeaderProvider')
+    throw new Error(
+      `${useHeader.name} must be used within a its corresponding context`,
+    )
 
   return context
 }

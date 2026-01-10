@@ -21,7 +21,9 @@ export const useNavigation = () => {
   const context = useContext(NavigationContext)
 
   if (context === undefined)
-    throw new Error('useNavigation must be used within a NavigationProvider')
+    throw new Error(
+      `${useNavigation.name} must be used within a its corresponding context`,
+    )
 
   return context
 }

@@ -6,6 +6,7 @@ interface DimensionProviderProps {
 }
 
 const DimensionProvider = ({ children }: DimensionProviderProps) => {
+  // States
   const [navigationBarHeight, setNavigationBarHeight] = useState<number>(0)
 
   return (

@@ -28,12 +28,16 @@ const NavigationItem = ({
   label,
   href,
 }: (typeof NAVIGATION_ITEMS)[number]) => {
+  // Hooks
   const navigate = useNavigate()
 
+  // Contexts
   const { current, setCurrent } = useNavigation()
 
+  // States
   const isCurrentNavigation = current === name
 
+  // Functions
   const _onNavigate = () => {
     setCurrent(name)
     navigate(href)
@@ -54,10 +58,13 @@ const NavigationItem = ({
 }
 
 const NavigationBar = () => {
+  // Refs
   const navigationBarRef = useRef<HTMLDivElement>(null)
 
+  // Contexts
   const { setNavigationBarHeight } = useDimension()
 
+  // Effects
   useEffect(() => {
     const calculateHeight = () => {
       if (navigationBarRef.current) {
@@ -68,7 +75,6 @@ const NavigationBar = () => {
     }
 
     calculateHeight()
-
     window.addEventListener('resize', calculateHeight)
 
     return () => window.removeEventListener('resize', calculateHeight)

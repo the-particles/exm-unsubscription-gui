@@ -2,8 +2,10 @@ import { useEffect } from 'react'
 import { useHeader } from '@pars/providers/use-header'
 
 const Home = () => {
+  // States
   const { setAction } = useHeader()
 
+  // Effects
   useEffect(() => setAction(null), [setAction])
 
   return (
