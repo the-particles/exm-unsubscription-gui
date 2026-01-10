@@ -70,6 +70,17 @@ const ServiceWorkerProvider = ({
       });
     }
   }, []);
+  useEffect(() => {
+    if (isReadyOffline) {
+      setTimeout(() => {
+        const splashScreen = document.getElementById("splash-screen");
+        if (splashScreen) {
+          splashScreen.style.opacity = "0";
+          splashScreen.style.visibility = "hidden";
+        }
+      }, 750);
+    }
+  }, [isReadyOffline]);
 
   const skipWaiting = () => {
     if (newWorker) {
