@@ -1,5 +1,5 @@
 import { CloudAlert, CloudCheck } from 'lucide-react'
-import { usePWA } from '@pars/providers/use-pwa'
+import { usePWA } from '@pars/hooks/use-pwa'
 
 const OfflineStatus = () => {
   // Contexts

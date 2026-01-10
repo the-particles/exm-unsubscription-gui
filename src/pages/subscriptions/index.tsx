@@ -5,7 +5,7 @@ import {
   useSubscriptionsDeletion,
 } from '@pars/states/subscriptions'
 import { Button } from '@pars/shared/components/ui/button'
-import { useHeader } from '@pars/providers/use-header'
+import { useHeader } from '@pars/hooks/use-header'
 import SubscriptionCreation from './subscription-creation'
 
 const Subscriptions = () => {

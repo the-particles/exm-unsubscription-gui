@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
+import type { ProviderProps } from '@pars/interfaces/provider'
 import { refreshPage } from '@pars/utils/document'
 import { toast } from 'sonner'
 import {
@@ -11,14 +12,9 @@ import {
   AlertDialogTitle,
 } from '@pars/shared/components/ui/alert-dialog'
 import { Toaster } from '@pars/shared/components/ui/sonner'
-import { PWAContext } from './use-pwa'
 
-type PWAProviderProps = {
-  children: React.ReactNode
-}
-
-const HAS_NEW_UPDATE_KEY = 'new-update'
-
+const HAS_NEW_UPDATE_KEY = 'unsubscription-new-update'
+const SPLASH_SCREEN_TIMEOUT = 2000
 const hideSplashScreen = () =>
   setTimeout(() => {
     const splashScreen = document.getElementById('splash-screen')
@@ -26,9 +22,20 @@ const hideSplashScreen = () =>
       splashScreen.style.opacity = '0'
       splashScreen.style.visibility = 'hidden'
     }
-  }, 750)
+  }, SPLASH_SCREEN_TIMEOUT)
 
-const PWAProvider = ({ children, ...props }: PWAProviderProps) => {
+interface PWAState {
+  isReadyOffline: boolean
+  hasNewWorker: boolean
+}
+
+const INITIAL_STATE: PWAState = {
+  isReadyOffline: false,
+  hasNewWorker: false,
+}
+export const PWAContext = createContext<PWAState>(INITIAL_STATE)
+
+const PWAProvider = ({ children }: ProviderProps) => {
   // States
   const [isReadyOffline, setIsReadyOffline] = useState(false)
   const [hasNewWorker, setHasNewWorker] = useState(() =>
@@ -93,7 +100,7 @@ const PWAProvider = ({ children, ...props }: PWAProviderProps) => {
   }
 
   return (
-    <PWAContext.Provider {...props} value={{ isReadyOffline, hasNewWorker }}>
+    <PWAContext.Provider value={{ isReadyOffline, hasNewWorker }}>
       {children}
       <Toaster position={'bottom-center'} />
       <AlertDialog open={hasNewWorker} onOpenChange={setHasNewWorker}>

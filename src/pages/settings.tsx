@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useHeader } from '@pars/providers/use-header'
+import { useHeader } from '@pars/hooks/use-header'
 import OfflineStatus from '@pars/components/offline-status'
 
 const Settings = () => {

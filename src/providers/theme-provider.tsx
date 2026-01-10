@@ -1,17 +1,26 @@
-import { type ReactNode, useEffect, useState } from 'react'
-import { type Theme, ThemeContext } from './use-theme'
+import { createContext, useEffect, useState } from 'react'
+import type { ProviderProps } from '@pars/interfaces/provider'
 
-const THEME_KEY = 'ui-theme'
+const THEME_KEY = 'subscription-ui-theme'
 
-interface ThemeProviderProps {
-  children: ReactNode
+type Theme = 'dark' | 'light' | 'system'
+interface ThemeState {
+  theme: Theme
+  setTheme: (theme: Theme) => void
+}
+interface ThemeProviderProps extends ProviderProps {
   defaultTheme?: Theme
 }
+
+const INITIAL_STATE: ThemeState = {
+  theme: 'system',
+  setTheme: () => null,
+}
+export const ThemeContext = createContext<ThemeState>(INITIAL_STATE)
 
 const ThemeProvider = ({
   children,
   defaultTheme = 'system',
-  ...props
 }: ThemeProviderProps) => {
   // States
   const [theme, setTheme] = useState<Theme>(
@@ -45,9 +54,7 @@ const ThemeProvider = ({
   }, [theme])
 
   return (
-    <ThemeContext.Provider {...props} value={_value}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={_value}>{children}</ThemeContext.Provider>
   )
 }
 

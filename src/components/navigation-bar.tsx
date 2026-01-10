@@ -2,8 +2,8 @@ import { useEffect, useRef } from 'react'
 import { ChartPie, CreditCard, Settings } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '@pars/shared/components/ui/button'
-import { useDimension } from '@pars/providers/use-dimension'
-import { useNavigation } from '@pars/providers/use-navigation'
+import { useDimension } from '@pars/hooks/use-dimension'
+import { useNavigation } from '@pars/hooks/use-navigation'
 import './navigation-bar.css'
 
 const NAVIGATION_ITEMS = [

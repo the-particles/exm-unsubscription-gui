@@ -243,17 +243,12 @@
       media="screen and (device-width: 744px) and (device-height: 1133px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
       href="images/8.3__iPad_Mini_portrait.png"
     />
-
-    <title>Unsubscription</title>
-  </head>
-  <body style="background-color: #0a0e12">
     <style>
       #splash-screen {
         width: 100%;
         height: 100dvh;
         z-index: 50;
         position: fixed;
-        background-color: #0a0e12;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -262,13 +257,13 @@
       }
 
       #splash-screen > div {
-        width: 40%;
+        width: 20%;
         position: relative;
       }
 
       .loader-wrapper {
         position: absolute;
-        bottom: -15%;
+        bottom: -60%;
         left: 50%;
         transform: translateX(-50%);
       }
@@ -276,12 +271,34 @@
       .loader {
         width: 20px;
         height: 20px;
-        border: 3px solid #e7e9ea;
         border-bottom-color: transparent;
         border-radius: 50%;
         display: inline-block;
         box-sizing: border-box;
         animation: rotation 1.5s linear infinite;
+      }
+
+      @media (prefers-color-scheme: light) {
+        #splash-screen {
+          background-color: #e7e9ea;
+          color: #0a0e12;
+        }
+
+        .loader {
+          border: 3px solid #0a0e12;
+          border-bottom-color: transparent;
+        }
+      }
+      @media (prefers-color-scheme: dark) {
+        #splash-screen {
+          background-color: #0a0e12;
+          color: #e7e9ea;
+        }
+
+        .loader {
+          border: 3px solid #e7e9ea;
+          border-bottom-color: transparent;
+        }
       }
 
       @keyframes rotation {
@@ -292,19 +309,37 @@
           transform: rotate(360deg);
         }
       }
-
-      :root {
-        --safe-area-top: env(safe-area-inset-top);
-      }
-
-      #root {
-        min-height: 100dvh;
-        padding-top: var(--safe-area-top);
-      }
     </style>
+
+    <title>Unsubscription</title>
+  </head>
+  <body>
     <div id="splash-screen">
       <div>
-        <img src="images/icon.png" />
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xml:space="preserve"
+          xmlns:serif="http://www.serif.com/"
+          fill="currentColor"
+        >
+          <g>
+            <circle cx="514.8" cy="511.797" r="215.78" fill="currentColor" />
+            <path
+              d="M494.07,8.729c5.422,-0.198 10.691,1.817 14.597,5.583c3.906,3.766 6.112,8.958 6.112,14.383c0.02,29.196 0.02,82.549 0.02,111.216c-0,10.659 -8.36,19.446 -19.006,19.975c-185.811,9.848 -333.435,163.64 -333.435,351.911c0,194.517 157.923,352.441 352.441,352.441c163.305,0 304.302,-111.993 342.452,-269.102c2.484,-10.345 12.639,-16.928 23.096,-14.973c28.181,5.245 80.621,15.049 109.32,20.415c5.342,0.999 10.047,4.128 13.034,8.667c2.987,4.54 3.997,10.099 2.8,15.4c-52.281,227.691 -255.262,390.639 -490.702,390.639c-277.882,0 -503.487,-225.605 -503.487,-503.487c0,-271.125 214.301,-492.196 482.757,-503.068Z"
+              fill="currentColor"
+            />
+            <path
+              d="M1012.47,435.481c0.796,5.365 -0.624,10.823 -3.933,15.121c-3.309,4.297 -8.224,7.064 -13.615,7.665c-29.019,3.257 -82.052,9.168 -110.537,12.342c-10.596,1.18 -20.256,-6.159 -21.958,-16.684c-9.748,-58.738 -34.251,-114.047 -71.186,-160.748c-6.642,-8.319 -5.59,-20.387 2.391,-27.431c21.469,-18.989 61.476,-54.299 83.37,-73.622c4.071,-3.593 9.429,-5.377 14.842,-4.941c5.413,0.436 10.415,3.055 13.859,7.254c56.35,69.444 93.213,152.648 106.767,241.046Z"
+              fill="currentColor"
+            />
+            <circle cx="691.864" cy="123.328" r="75.523" fill="currentColor" />
+          </g>
+        </svg>
         <div class="loader-wrapper">
           <span class="loader"></span>
         </div>

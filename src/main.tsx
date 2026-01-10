@@ -6,7 +6,7 @@ import './index.css'
 
 registerSW()
 
-const root = document.getElementById('root') 
+const root = document.getElementById('root')
 if (!root) throw new Error('Root element is not found')
 
 createRoot(root).render(
