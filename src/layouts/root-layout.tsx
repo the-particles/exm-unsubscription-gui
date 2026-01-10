@@ -47,7 +47,7 @@ const RootLayout = () => {
         <div>
           <h1 className="font-semibold text-2xl capitalize">{current}</h1>
           <span className="text-sm text-accent-foreground">
-            Your subscription overview
+            Description of the page
           </span>
         </div>
         {Action ? <Action /> : <></>}
