@@ -49,7 +49,7 @@ const RootLayout = () => {
       </div>
       <ScrollArea
         style={{ height: `${scrollAreaHeight}px` }}
-        className="w-full main"
+        className="w-full scroll-area"
         ref={scrollRef}
       >
         <div className="flex flex-col items-center px-5 pt-5 pb-28 relative w-full">
