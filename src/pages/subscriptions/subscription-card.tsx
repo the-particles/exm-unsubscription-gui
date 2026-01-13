@@ -1,4 +1,4 @@
-import type { Subscription } from '@pars/interfaces/subscription'
+import type { Subscription } from '@pars/database'
 import './subscription-card.css'
 
 interface SubscriptionCardProps {
