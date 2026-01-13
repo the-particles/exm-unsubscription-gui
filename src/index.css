@@ -62,12 +62,6 @@
   --subscription-card-border: #e6e6f0;
 }
 
-html {
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-}
-
 body {
   min-height: 100vh;
   min-height: 100dvh;
@@ -75,7 +69,7 @@ body {
   overflow: auto;
   position: relative;
   padding-top: env(safe-area-inset-top);
-  /* padding-bottom: env(safe-area-inset-bottom); */
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 @theme inline {
