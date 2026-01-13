@@ -16,6 +16,7 @@
 
 .navigation-bar {
   background: var(--navigation-bar-background);
+  padding-bottom: env(safe-area-inset-bottom) !important;
 }
 
 .navigation-item::after {

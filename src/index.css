@@ -69,9 +69,13 @@ html {
 }
 
 body {
+  min-height: 100vh;
+  min-height: 100dvh;
   height: 100%;
   overflow: auto;
   position: relative;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 @theme inline {
