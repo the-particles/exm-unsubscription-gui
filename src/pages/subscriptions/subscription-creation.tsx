@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useSubscriptionCreation } from '@pars/states/subscriptions'
+import { database } from '@pars/database'
 import { Plus } from 'lucide-react'
 import { Button } from '@pars/shared/components/ui/button'
 import {
@@ -24,15 +24,16 @@ const SubscriptionCreation = () => {
   const [open, setOpen] = useState(false)
   const [name, setName] = useState('')
 
-  // Mutations
-  const subscriptionCreation = useSubscriptionCreation()
-
   // Functions
   const _reset = () => {
     setName('')
   }
   const _onCreate = () => {
-    subscriptionCreation.mutate({ name })
+    database.subscriptions.add({
+      name,
+      categories: [{ id: 1, name: 'Expense' }],
+      provider: { id: 1, name: 'Spotify' },
+    })
     _reset()
     setOpen(false)
   }

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import DimensionContext from '@pars/contexts/dimension-context'
-import type { ProviderProps } from '@pars/interfaces/provider'
+import type { ProviderProps } from '@pars/interfaces/context-provider'
 
 const DimensionProvider = ({ children }: ProviderProps) => {
   // States

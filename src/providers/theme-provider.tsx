@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import ThemeContext from '@pars/contexts/theme-provider'
-import type { ProviderProps } from '@pars/interfaces/provider'
+import type { ProviderProps } from '@pars/interfaces/context-provider'
 
 const THEME_KEY = 'subscription-ui-theme'
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import PWAContext from '@pars/contexts/pwa-context'
-import type { ProviderProps } from '@pars/interfaces/provider'
+import type { ProviderProps } from '@pars/interfaces/context-provider'
 import { refreshPage } from '@pars/utils/document'
 import { toast } from 'sonner'
 import {

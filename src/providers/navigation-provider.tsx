@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import NavigationContext from '@pars/contexts/navigation-context'
-import type { ProviderProps } from '@pars/interfaces/provider'
+import type { ProviderProps } from '@pars/interfaces/context-provider'
 
 const NavigationProvider = ({ children }: ProviderProps) => {
   // States

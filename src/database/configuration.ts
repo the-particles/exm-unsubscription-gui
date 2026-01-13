@@ -1,6 +1,6 @@
 export const DATABASE_NAME = 'unsubscription'
 export const DATABASE_VERSION = 1
 
-export const SUBSCRIPTION_NAME = 'subscription'
-export const CATEGORY_NAME = 'category'
-export const PROVIDER_NAME = 'provider'
+export const SUBSCRIPTION_TABLE_NAME = 'subscriptions'
+export const CATEGORY_TABLE_NAME = 'categories'
+export const PROVIDER_TABLE_NAME = 'providers'

@@ -10,7 +10,7 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    mkcert(),
+    !!process.env.USE_HTTPS && mkcert(),
     VitePWA({
       registerType: 'autoUpdate',
       strategies: 'injectManifest',
@@ -35,7 +35,7 @@ export default defineConfig({
       },
       includeAssets: ['**/*'],
     }),
-  ],
+  ].filter(Boolean),
   resolve: {
     alias: {
       '@pars': path.resolve(__dirname, './src'),
