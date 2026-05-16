@@ -58,7 +58,7 @@ const RootLayout = () => {
         ref={scrollRef}
       >
         <div
-          style={{ paddingBottom: `${navigationBarHeight + 50}px` }}
+          style={{ paddingBottom: `${navigationBarHeight + 60}px` }}
           className="flex flex-col items-center px-5 pt-5 relative w-full"
         >
           <Outlet />
