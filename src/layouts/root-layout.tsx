@@ -38,7 +38,7 @@ const RootLayout = () => {
   }, [])
 
   return (
-    <main className="flex flex-col items-center w-full h-dvh overflow-hidden">
+    <main className="flex flex-col items-center w-full min-h-dvh h-dvh overflow-hidden">
       <RefreshingPull />
       <div
         ref={headerRef}

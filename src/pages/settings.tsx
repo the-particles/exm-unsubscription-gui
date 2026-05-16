@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Button } from '@pars/shared/components/ui/button'
 import { useHeader } from '@pars/hooks/use-header'
 import OfflineStatus from '@pars/components/offline-status'
+import ThemeSwitch from '@pars/components/theme-switch'
 
 const Settings = () => {
   // States
@@ -21,6 +22,7 @@ const Settings = () => {
   return (
     <div>
       <Button onClick={_onReset}>Reset</Button>
+      <ThemeSwitch />
     </div>
   )
 }

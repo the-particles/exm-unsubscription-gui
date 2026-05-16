@@ -36,33 +36,36 @@ const Subscriptions = () => {
 
   return (
     <div className="w-full">
-      <Calendar
-        mode="range"
-        defaultMonth={range?.from}
-        selected={range}
-        onSelect={setRange}
-        numberOfMonths={1}
-        captionLayout="dropdown"
-        className="w-full bg-transparent [--cell-size:--spacing(10)] md:[--cell-size:--spacing(12)]"
-        formatters={{
-          formatMonthDropdown: (date) => {
-            return date.toLocaleString('default', { month: 'long' })
-          },
-        }}
-        components={{
-          DayButton: ({ children, modifiers, day, ...props }) => {
-            const isWeekend = day.date.getDay() === 0 || day.date.getDay() === 6
-            return (
-              <CalendarDayButton day={day} modifiers={modifiers} {...props}>
-                {children}
-                {!modifiers.outside && isWeekend && (
-                  <div className="size-2 rounded-full bg-red-500"></div>
-                )}
-              </CalendarDayButton>
-            )
-          },
-        }}
-      />
+      <div className="w-full">
+        <Calendar
+          mode="range"
+          defaultMonth={range?.from}
+          selected={range}
+          onSelect={setRange}
+          numberOfMonths={1}
+          captionLayout="dropdown"
+          className="bg-transparent [--cell-size:--spacing(10)] md:[--cell-size:--spacing(12)]"
+          formatters={{
+            formatMonthDropdown: (date) => {
+              return date.toLocaleString('default', { month: 'long' })
+            },
+          }}
+          components={{
+            DayButton: ({ children, modifiers, day, ...props }) => {
+              const isWeekend =
+                day.date.getDay() === 0 || day.date.getDay() === 6
+              return (
+                <CalendarDayButton day={day} modifiers={modifiers} {...props}>
+                  {children}
+                  {!modifiers.outside && isWeekend && (
+                    <div className="size-1 rounded-full bg-red-500"></div>
+                  )}
+                </CalendarDayButton>
+              )
+            },
+          }}
+        />
+      </div>
       <h1 className="font-semibold text-lg">Active Subscriptions</h1>
       <div className="flex flex-col gap-3 my-5">
         {subscriptions &&
