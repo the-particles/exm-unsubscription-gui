@@ -6,8 +6,8 @@
   "scripts": {
     "ci": "npm ci",
     "dev": "vite",
-    "dev:host": "USE_HTTPS=true vite --host",
-    "dev:pwa-host": "npm run build && USE_HTTPS=true npm run preview -- --host",
+    "dev:host": "cross-env USE_HTTPS=true vite --host",
+    "dev:pwa-host": "npm run build && cross-env USE_HTTPS=true npm run preview -- --host",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --check \"src/**/(*.tsx|*.ts|*.css|*.scss)\"",
@@ -49,6 +49,7 @@
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react-swc": "^4.2.2",
+    "cross-env": "^10.1.0",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
