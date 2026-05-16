@@ -244,9 +244,14 @@
       href="images/8.3__iPad_Mini_portrait.png"
     />
     <style>
-      #splash-screen {
+      body {
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      #splash {
         width: 100%;
-        height: 100dvh;
+        height: 100vh;
         z-index: 50;
         position: fixed;
         display: flex;
@@ -256,19 +261,20 @@
         opacity: 1;
       }
 
-      #splash-screen > div {
-        width: 20%;
+      .splash-inner {
+        width: 10rem;
         position: relative;
+        margin-bottom: 10rem;
       }
 
-      .loader-wrapper {
+      .spinner-wrapper {
         position: absolute;
         bottom: -60%;
         left: 50%;
         transform: translateX(-50%);
       }
 
-      .loader {
+      .spinner {
         width: 20px;
         height: 20px;
         border-bottom-color: transparent;
@@ -279,23 +285,23 @@
       }
 
       @media (prefers-color-scheme: light) {
-        #splash-screen {
+        #splash {
           background-color: #e7e9ea;
           color: #0a0e12;
         }
 
-        .loader {
+        .spinner {
           border: 3px solid #0a0e12;
           border-bottom-color: transparent;
         }
       }
       @media (prefers-color-scheme: dark) {
-        #splash-screen {
+        #splash {
           background-color: #0a0e12;
           color: #e7e9ea;
         }
 
-        .loader {
+        .spinner {
           border: 3px solid #e7e9ea;
           border-bottom-color: transparent;
         }
@@ -314,8 +320,8 @@
     <title>Unsubscription</title>
   </head>
   <body>
-    <div id="splash-screen">
-      <div>
+    <div id="splash">
+      <div class="splash-inner">
         <svg
           width="100%"
           height="100%"
@@ -338,8 +344,8 @@
             <circle cx="691.864" cy="123.328" r="75.523" />
           </g>
         </svg>
-        <div class="loader-wrapper">
-          <span class="loader"></span>
+        <div class="spinner-wrapper">
+          <span class="spinner"></span>
         </div>
       </div>
     </div>

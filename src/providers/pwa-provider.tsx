@@ -18,7 +18,7 @@ const HAS_NEW_UPDATE_KEY = 'unsubscription-new-update'
 const SPLASH_SCREEN_TIMEOUT = 2000
 const hideSplashScreen = () =>
   setTimeout(() => {
-    const splashScreen = document.getElementById('splash-screen')
+    const splashScreen = document.getElementById('splash')
     if (splashScreen) {
       splashScreen.style.opacity = '0'
       splashScreen.style.visibility = 'hidden'

@@ -65,7 +65,6 @@
 html {
   height: 100vh;
   overflow: hidden;
-  display: fixed;
   overscroll-behavior-y: none;
 }
 
