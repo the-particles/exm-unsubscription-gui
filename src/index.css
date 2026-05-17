@@ -20,6 +20,11 @@
   --color-subscription-card-foreground: var(--foreground);
   --color-subscription-card-foreground-muted: var(--foreground-muted);
 
+  --color-or-accent: #f45909;
+  --color-or-accent-muted: #f47b3c;
+  --color-or-accent-background: #f6e5de;
+  --color-or-accent-border: #f6cbba;
+
   --text-xxs: 0.65rem;
 
   --animate-pulse: pulse 2s ease-in-out;

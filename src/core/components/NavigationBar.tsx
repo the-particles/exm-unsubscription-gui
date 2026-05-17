@@ -40,18 +40,18 @@ const NavigationItem = ({
   // Functions
   const _onNavigate = () => {
     setCurrent(name)
-    navigate(href, { viewTransition: true })
+    navigate(href)
   }
 
   return (
     <Button asChild withChildrenStyle onClick={_onNavigate}>
       <div
         className={`flex flex-col justify-center items-center gap-1 transition-transform active:scale-90 active:transition-[transform_0.25s_ease] ${
-          isCurrentNavigation && 'text-teal-400'
+          isCurrentNavigation && 'text-or-accent'
         }`}
       >
         <Icon strokeWidth={isCurrentNavigation ? 2.75 : undefined} />
-        <span className={`text-xxs`}>{label}</span>
+        <span className="text-xxs">{label}</span>
       </div>
     </Button>
   )

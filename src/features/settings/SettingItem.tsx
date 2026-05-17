@@ -19,7 +19,7 @@ const SettingItem = ({
       onClick={onClick}
     >
       <div className="flex items-center gap-3 text-setting-card-foreground">
-        <Icon className="size-4" />
+        <Icon className="size-4 text-or-accent" />
         <span className="font-medium">{title}</span>
       </div>
       <div className="text-sm capitalize text-setting-card-foreground-muted">

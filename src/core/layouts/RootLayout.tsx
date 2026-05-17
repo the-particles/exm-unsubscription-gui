@@ -81,25 +81,16 @@ const Header = ({ ref }: { ref: ForwardedRef<HTMLDivElement> }) => {
   const { current } = useNavigation()
   const { Action, description } = useHeader()
 
-  const topInset = getComputedStyle(document.documentElement).getPropertyValue(
-    '--safe-area-inset-top',
-  )
-  const bottomInset = getComputedStyle(
-    document.documentElement,
-  ).getPropertyValue('--safe-area-inset-bottom')
-
   return (
     <div
       ref={ref}
       className="relative p-5 bg-background text-foreground shrink-0 w-full flex justify-between"
     >
       <div className="flex flex-col justify-start h-full">
-        <h1 className="font-bold text-xl capitalize">
-          {current} {topInset} {bottomInset}
+        <h1 className="font-bold text-xl capitalize text-or-accent">
+          {current}
         </h1>
-        <span className="text-xs text-setting-card-foreground-muted">
-          {description}
-        </span>
+        <span className="text-xs text-or-accent-muted">{description}</span>
       </div>
 
       <div className="self-center">{Action ? <Action /> : <></>}</div>

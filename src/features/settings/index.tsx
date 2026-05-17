@@ -4,7 +4,7 @@ import {
   useHeaderDescription,
 } from '@pars/core/contexts/header/useHeader'
 import { useTheme } from '@pars/core/contexts/theme/useTheme'
-import { ArrowRight, Palette, Trash } from 'lucide-react'
+import { ArrowRight, Palette, SettingsIcon, Trash } from 'lucide-react'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -23,6 +23,13 @@ const Settings = () => {
   const { theme, setTheme } = useTheme()
   useHeaderDescription('The Settings')
   useHeaderAction(PWAStatus)
+
+  const topInset = getComputedStyle(document.documentElement).getPropertyValue(
+    '--safe-area-inset-top',
+  )
+  const bottomInset = getComputedStyle(
+    document.documentElement,
+  ).getPropertyValue('--safe-area-inset-bottom')
 
   // Functions
   const _onReset = async () => {
@@ -57,7 +64,7 @@ const Settings = () => {
 
       <div>
         <h3 className="text-lg font-bold text-card-text">System</h3>
-        <div className="mt-5">
+        <div className="mt-5 flex flex-col gap-2">
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <SettingItem
@@ -81,6 +88,20 @@ const Settings = () => {
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
+
+          <SettingItem
+            Icon={SettingsIcon}
+            title="Top Safe Area"
+            rightContent={topInset}
+            onClick={() => {}}
+          />
+
+          <SettingItem
+            Icon={SettingsIcon}
+            title="Bottom Safe Area"
+            rightContent={bottomInset}
+            onClick={() => {}}
+          />
         </div>
       </div>
     </div>
