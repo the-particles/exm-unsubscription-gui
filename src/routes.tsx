@@ -1,13 +1,13 @@
-import RootLayout from '@pars/layouts/root-layout'
+import RootLayout from '@pars/core/layouts/RootLayout'
 import { Navigate, createBrowserRouter } from 'react-router-dom'
 
-const LazyHome = import('./pages/home').then((module) => ({
+const LazyHome = import('./features/home').then((module) => ({
   Component: module.default,
 }))
-const LazySubscriptions = import('./pages/subscriptions').then((module) => ({
+const LazySubscriptions = import('./features/subscriptions').then((module) => ({
   Component: module.default,
 }))
-const LazySettings = import('./pages/settings').then((module) => ({
+const LazySettings = import('./features/settings').then((module) => ({
   Component: module.default,
 }))
 

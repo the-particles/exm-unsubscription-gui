@@ -1,0 +1,64 @@
+:root {
+  --splash-background: #eef0f5;
+  --splash-color: #4f566b;
+  --splash-spinner-border-color: #acb0b8;
+}
+
+.dark {
+  --splash-background: #1b232f;
+  --splash-color: #e5e7eb;
+  --splash-spinner-border-color: #abb4c2;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#splash {
+  width: 100%;
+  height: 100vh;
+  z-index: 50;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.75s ease-in-out;
+  opacity: 1;
+  background-color: var(--splash-background);
+  color: var(--splash-color);
+}
+
+.splash-inner {
+  width: 10rem;
+  position: relative;
+  margin-bottom: 5rem;
+}
+
+.spinner-wrapper {
+  position: absolute;
+  bottom: -60%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1.5s linear infinite;
+  border: 3px solid var(--splash-spinner-border-color);
+  border-bottom-color: transparent;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -9,12 +9,12 @@
     />
     <meta
       name="theme-color"
-      content="#0a0e12"
+      content="#1b232f"
       media="(prefers-color-scheme: dark)"
     />
     <meta
       name="theme-color"
-      content="#e7e9ea"
+      content="#eef0f5"
       media="(prefers-color-scheme: light)"
     />
     <meta name="mobile-web-app-capable" content="yes" />
@@ -243,80 +243,7 @@
       media="screen and (device-width: 744px) and (device-height: 1133px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
       href="images/8.3__iPad_Mini_portrait.png"
     />
-    <style>
-      body {
-        margin: 0;
-        box-sizing: border-box;
-      }
-
-      #splash {
-        width: 100%;
-        height: 100vh;
-        z-index: 50;
-        position: fixed;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: opacity 0.75s ease-in-out;
-        opacity: 1;
-      }
-
-      .splash-inner {
-        width: 10rem;
-        position: relative;
-        margin-bottom: 5rem;
-      }
-
-      .spinner-wrapper {
-        position: absolute;
-        bottom: -60%;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .spinner {
-        width: 20px;
-        height: 20px;
-        border-bottom-color: transparent;
-        border-radius: 50%;
-        display: inline-block;
-        box-sizing: border-box;
-        animation: rotation 1.5s linear infinite;
-      }
-
-      @media (prefers-color-scheme: light) {
-        #splash {
-          background-color: #e7e9ea;
-          color: #0a0e12;
-        }
-
-        .spinner {
-          border: 3px solid #0a0e12;
-          border-bottom-color: transparent;
-        }
-      }
-      @media (prefers-color-scheme: dark) {
-        #splash {
-          background-color: #0a0e12;
-          color: #e7e9ea;
-        }
-
-        .spinner {
-          border: 3px solid #e7e9ea;
-          border-bottom-color: transparent;
-        }
-      }
-
-      @keyframes rotation {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <title>Unsubscription</title>
   </head>
   <body>
