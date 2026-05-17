@@ -69,7 +69,9 @@
 }
 
 :root {
-  /* font-family: Geist, system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  --safe-area-inset-top: env(safe-area-inset-top);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
+
   line-height: 1.5;
   font-weight: 400;
 
