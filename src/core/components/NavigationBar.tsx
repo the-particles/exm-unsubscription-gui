@@ -4,7 +4,7 @@ import { useNavigation } from '@pars/core/contexts/navigation/useNavigation'
 import { ChartPie, CreditCard, Settings } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '@pars/shared/components/ui/button'
-import './navigation-bar.css'
+import './NavigationBar.css'
 
 const NAVIGATION_ITEMS = [
   { name: 'dashboard', label: 'Dashboard', icon: ChartPie, href: '/' },

@@ -1,6 +1,6 @@
 import { type ComponentType, useState } from 'react'
-import HeaderContext from '@pars/core/contexts/HeaderContext'
 import type { ProviderProps } from '@pars/core/interfaces/ContextProvider'
+import HeaderContext from './HeaderContext'
 
 const HeaderProvider = ({ children }: ProviderProps) => {
   // States

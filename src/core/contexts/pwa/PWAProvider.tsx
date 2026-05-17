@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import PWAContext from '@pars/core/contexts/PWAContext'
 import type { ProviderProps } from '@pars/core/interfaces/ContextProvider'
 import { refreshPage } from '@pars/core/utils/document'
 import { toast } from 'sonner'
@@ -13,6 +12,7 @@ import {
   AlertDialogTitle,
 } from '@pars/shared/components/ui/alert-dialog'
 import { Toaster } from '@pars/shared/components/ui/sonner'
+import PWAContext from './PWAContext'
 
 const HAS_NEW_UPDATE_KEY = 'unsubscription-new-update'
 const SPLASH_SCREEN_TIMEOUT = 2000
