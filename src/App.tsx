@@ -9,15 +9,15 @@ import router from './routes'
 const App = () => {
   return (
     <DimensionProvider>
-      <HeaderProvider>
-        <ThemeProvider>
-          <PWAProvider>
-            <NavigationProvider>
+      <NavigationProvider>
+        <HeaderProvider>
+          <ThemeProvider>
+            <PWAProvider>
               <RouterProvider router={router} />
-            </NavigationProvider>
-          </PWAProvider>
-        </ThemeProvider>
-      </HeaderProvider>
+            </PWAProvider>
+          </ThemeProvider>
+        </HeaderProvider>
+      </NavigationProvider>
     </DimensionProvider>
   )
 }

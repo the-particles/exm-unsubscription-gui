@@ -1,5 +1,8 @@
-import { useEffect, useState } from 'react'
-import { useHeader } from '@pars/core/contexts/header/useHeader'
+import { useState } from 'react'
+import {
+  useHeaderAction,
+  useHeaderDescription,
+} from '@pars/core/contexts/header/useHeader'
 import { database } from '@pars/core/database'
 import SubscriptionCard from '@pars/features/subscriptions/SubscriptionCard'
 import { useLiveQuery } from 'dexie-react-hooks'
@@ -9,17 +12,13 @@ import SubscriptionCreation from './SubscriptionCreation'
 
 const Subscriptions = () => {
   // Contexts
-  const { setAction } = useHeader()
+  useHeaderDescription('The Subscriptions')
+  useHeaderAction(SubscriptionCreation)
 
   // States
   const subscriptions = useLiveQuery(() => database.subscriptions.toArray())
   const [selectedDate, setSelectedDate] = useState(new Date())
   const _subscriptionState = { selectedDate, setSelectedDate }
-
-  // Effects
-  useEffect(() => setAction(() => SubscriptionCreation), [setAction])
-
-  // Functions
 
   return (
     <SubscriptionContext.Provider value={_subscriptionState}>

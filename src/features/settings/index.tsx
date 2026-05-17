@@ -1,7 +1,8 @@
-import { useEffect } from 'react'
 import PWAStatus from '@pars/core/components/PWAStatus'
-import { useHeader } from '@pars/core/contexts/header/useHeader'
-import { useNavigation } from '@pars/core/contexts/navigation/useNavigation'
+import {
+  useHeaderAction,
+  useHeaderDescription,
+} from '@pars/core/contexts/header/useHeader'
 import { useTheme } from '@pars/core/contexts/theme/useTheme'
 import { ArrowRight, Palette, Trash } from 'lucide-react'
 import {
@@ -19,17 +20,9 @@ import SettingItem from './SettingItem'
 
 const Settings = () => {
   // States
-  const { setAction } = useHeader()
-  const { setDescription } = useNavigation()
   const { theme, setTheme } = useTheme()
-
-  // Effects
-  useEffect(() => {
-    setDescription('Nah. The description')
-
-    return () => setDescription('')
-  }, [setDescription])
-  useEffect(() => setAction(() => PWAStatus), [setAction])
+  useHeaderDescription('The Settings')
+  useHeaderAction(PWAStatus)
 
   // Functions
   const _onReset = async () => {

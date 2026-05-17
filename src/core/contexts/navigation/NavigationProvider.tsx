@@ -7,13 +7,9 @@ const NavigationProvider = ({ children }: ProviderProps) => {
   const [current, setCurrent] = useState(
     () => window.location.pathname.split('/')[1] || 'dashboard',
   )
-  const [description, setDescription] = useState('')
-
   const _value = {
     current,
     setCurrent,
-    description,
-    setDescription,
   }
 
   return (

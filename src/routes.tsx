@@ -1,5 +1,6 @@
 import RootLayout from '@pars/core/layouts/RootLayout'
 import { Navigate, createBrowserRouter } from 'react-router-dom'
+import { Spinner } from './shared/components/ui/spinner'
 
 const LazyHome = import('./features/home').then((module) => ({
   Component: module.default,
@@ -19,14 +20,29 @@ const router = createBrowserRouter([
       {
         index: true,
         lazy: () => LazyHome,
+        hydrateFallbackElement: (
+          <div className="w-full h-full grow flex justify-center items-center">
+            <Spinner />
+          </div>
+        ),
       },
       {
         path: '/subscriptions',
         lazy: () => LazySubscriptions,
+        hydrateFallbackElement: (
+          <div className="w-full h-full grow flex justify-center items-center">
+            <Spinner />
+          </div>
+        ),
       },
       {
         path: '/settings',
         lazy: () => LazySettings,
+        hydrateFallbackElement: (
+          <div className="w-full h-full grow flex justify-center items-center">
+            <Spinner />
+          </div>
+        ),
       },
     ],
   },

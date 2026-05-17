@@ -1,12 +1,8 @@
-import { useEffect } from 'react'
-import { useHeader } from '@pars/core/contexts/header/useHeader'
+import { useHeaderDescription } from '@pars/core/contexts/header/useHeader'
 
 const Home = () => {
   // States
-  const { setAction } = useHeader()
-
-  // Effects
-  useEffect(() => setAction(null), [setAction])
+  useHeaderDescription('The Dashboard')
 
   return (
     <div>

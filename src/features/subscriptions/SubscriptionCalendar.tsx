@@ -1,9 +1,9 @@
 import { useContext } from 'react'
+import { CHIP_COLORS } from '@pars/core/constants/subscription'
 import {
   Calendar,
   CalendarDayButton,
 } from '@pars/shared/components/ui/calendar'
-import { CHIP_COLORS } from '@pars/core/constants/subscription'
 import SubscriptionContext from './SubscriptionContext'
 
 const SubscriptionCalendar = () => {

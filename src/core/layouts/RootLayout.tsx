@@ -43,7 +43,7 @@ const RootLayout = () => {
 
       <ScrollArea
         style={{ height: `${scrollAreaHeight}px` }}
-        className="w-full"
+        className="w-full relative grow h-20"
         ref={scrollRef}
       >
         <main
@@ -63,13 +63,13 @@ export default RootLayout
 
 // Internal
 const Header = ({ ref }: { ref: ForwardedRef<HTMLDivElement> }) => {
-  const { current, description } = useNavigation()
-  const { Action } = useHeader()
+  const { current } = useNavigation()
+  const { Action, description } = useHeader()
 
   return (
     <div
       ref={ref}
-      className="relative p-5 bg-background text-foreground shrink-0 w-full flex justify-between items-center h-20"
+      className="relative p-5 bg-background text-foreground shrink-0 w-full flex justify-between"
     >
       <div className="flex flex-col justify-start h-full">
         <h1 className="font-bold text-xl capitalize">{current}</h1>
@@ -78,7 +78,7 @@ const Header = ({ ref }: { ref: ForwardedRef<HTMLDivElement> }) => {
         </span>
       </div>
 
-      <div>{Action ? <Action /> : <></>}</div>
+      <div className="self-center">{Action ? <Action /> : <></>}</div>
     </div>
   )
 }

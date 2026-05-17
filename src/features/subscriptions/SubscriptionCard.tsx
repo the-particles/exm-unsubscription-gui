@@ -1,5 +1,5 @@
-import type { Subscription } from '@pars/core/database'
 import { CHIP_COLORS } from '@pars/core/constants/subscription'
+import type { Subscription } from '@pars/core/database'
 
 interface SubscriptionCardProps {
   subscription: Subscription
