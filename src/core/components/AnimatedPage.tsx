@@ -50,8 +50,8 @@ export default function AnimatedPage({
       variants={variants}
       initial="initial"
       animate="animate"
-      exit="exit"
-      className={`fixed top-0 left-0 p-5 flex flex-col gap-5 w-full h-full bg-background ${zIndex} shadow-[-10px_0_20px_rgba(0,0,0,0.05)]`}
+      // exit="exit"
+      className={`fixed top-0 left-0 p-5 pt-[calc(var(--safe-area-inset-top)+var(--spacing)*5)] flex flex-col gap-5 w-full h-full bg-background ${zIndex} shadow-[-10px_0_20px_rgba(0,0,0,0.05)]`}
     >
       <div>
         <ArrowLeft onClick={_onNavigateBack} />

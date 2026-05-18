@@ -65,7 +65,7 @@ const RootLayout = () => {
               key={location.pathname}
               initial="initial"
               animate="animate"
-              exit="exit"
+              // exit="exit"
               custom={isBack}
               style={{
                 paddingBottom: `${navigationBarHeight + bottomInset + 20}px`,
@@ -96,10 +96,12 @@ const Header = ({ ref }: { ref: ForwardedRef<HTMLDivElement> }) => {
       className="relative p-5 bg-background text-foreground shrink-0 w-full flex justify-between"
     >
       <div className="flex flex-col justify-start h-full">
-        <h1 className="font-bold text-xl capitalize text-or-accent">
+        <h1 className="font-bold text-xl capitalize text-setting-card-foreground">
           {current}
         </h1>
-        <span className="text-xs text-or-accent-muted">{description}</span>
+        <span className="text-xs text-setting-card-foreground-muted">
+          {description}
+        </span>
       </div>
 
       <div className="self-center">{Action ? <Action /> : <></>}</div>

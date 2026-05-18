@@ -11,7 +11,12 @@ const router = createBrowserRouter([
     path: '/',
     Component: RootLayout,
     HydrateFallback: NavigationFallback,
-    children: [...dashboardRoutes, ...subscriptionRoutes, ...settingRoutes],
+    children: [
+      { index: true, Component: NavigationDefault },
+      ...dashboardRoutes,
+      ...subscriptionRoutes,
+      ...settingRoutes,
+    ],
   },
   {
     path: '*',
