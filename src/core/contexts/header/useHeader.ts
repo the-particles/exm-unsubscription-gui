@@ -17,17 +17,17 @@ export const useHeaderDescription = (description: string) => {
 
   useEffect(() => {
     setDescription(description)
-    return () => setDescription('')
   }, [description, setDescription])
 }
 
-export const useHeaderAction = (Action: ComponentType) => {
+export const useHeaderAction = (Action: ComponentType | null) => {
   const { setAction } = useHeader()
 
-  useEffect(() => {
-    //! Must not use `setAction(Action)` because `Action` is actually an function and `setAction` will immediately execute `Action` function and return raw JSW
-    //! Must wrap the Component inside an anonymous function `() => Action`
-    setAction(() => Action)
-    return () => setAction(null)
-  }, [Action, setAction])
+  useEffect(
+    () =>
+      //! Must not use `setAction(Action)` because `Action` is actually an function and `setAction` will immediately execute `Action` function and return raw JSW
+      //! Must wrap the Component inside an anonymous function `() => Action`
+      setAction(() => Action),
+    [Action, setAction],
+  )
 }

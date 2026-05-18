@@ -4,16 +4,31 @@ import {
   useHeaderDescription,
 } from '@pars/core/contexts/header/useHeader'
 import { database } from '@pars/core/database'
-import SubscriptionCard from '@pars/features/subscriptions/SubscriptionCard'
+import { haptic } from '@pars/core/utils/document'
+import SubscriptionCard from '@pars/features/subscription/SubscriptionCard'
 import { useLiveQuery } from 'dexie-react-hooks'
+import { Plus } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import SubscriptionCalendar from './SubscriptionCalendar'
 import SubscriptionContext from './SubscriptionContext'
-import SubscriptionCreation from './SubscriptionCreation'
+
+const CreationButton = () => {
+  // Navigation
+  const navigate = useNavigate()
+
+  // Functions
+  const _onClick = () => {
+    haptic()
+    navigate('/subscription/creation')
+  }
+
+  return <Plus onClick={_onClick} />
+}
 
 const Subscriptions = () => {
   // Contexts
   useHeaderDescription('The Subscriptions')
-  useHeaderAction(SubscriptionCreation)
+  useHeaderAction(CreationButton)
 
   // States
   const subscriptions = useLiveQuery(() => database.subscriptions.toArray())

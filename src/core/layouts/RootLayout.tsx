@@ -4,10 +4,17 @@ import RefreshingPull from '@pars/core/components/RefreshingPull'
 import { useDimension } from '@pars/core/contexts/dimension/useDimension'
 import { useHeader } from '@pars/core/contexts/header/useHeader'
 import { useNavigation } from '@pars/core/contexts/navigation/useNavigation'
-import { Outlet } from 'react-router-dom'
+import { AnimatePresence, motion } from 'motion/react'
+import { useNavigationType, useOutlet } from 'react-router-dom'
 import { ScrollArea } from '@pars/shared/components/ui/scroll-area'
 
 const RootLayout = () => {
+  // Navigation
+  const navigationType = useNavigationType()
+  const outlet = useOutlet()
+
+  const isBack = navigationType === 'POP'
+
   // Refs
   const scrollRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
@@ -18,11 +25,6 @@ const RootLayout = () => {
   // States
   const [scrollAreaHeight, setScrollAreaHeight] = useState<number>(0)
 
-  // const topInset = Number(
-  //   getComputedStyle(document.documentElement)
-  //     .getPropertyValue('--safe-area-inset-top')
-  //     .replace('px', ''),
-  // )
   const bottomInset = Number(
     getComputedStyle(document.documentElement)
       .getPropertyValue('--safe-area-inset-bottom')
@@ -52,20 +54,27 @@ const RootLayout = () => {
 
       <Header ref={headerRef} />
 
-      <div className="w-full relative grow">
+      <div className="w-full relative grow overflow-hidden">
         <ScrollArea
           style={{ height: `${scrollAreaHeight}px` }}
           className="w-full relative"
           ref={scrollRef}
         >
-          <main
-            style={{
-              paddingBottom: `${navigationBarHeight + bottomInset + 20}px`,
-            }}
-            className="flex flex-col items-center px-5 pt-5 relative w-full"
-          >
-            <Outlet />
-          </main>
+          <AnimatePresence mode="popLayout" initial={true} custom={isBack}>
+            <motion.main
+              key={location.pathname}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              custom={isBack}
+              style={{
+                paddingBottom: `${navigationBarHeight + bottomInset + 20}px`,
+              }}
+              className="flex flex-col items-center px-5 pt-5 relative w-full"
+            >
+              {outlet}
+            </motion.main>
+          </AnimatePresence>
         </ScrollArea>
       </div>
 

@@ -7,18 +7,18 @@ import { Button } from '@pars/shared/components/ui/button'
 import './NavigationBar.css'
 
 const NAVIGATION_ITEMS = [
-  { name: 'dashboard', label: 'Dashboard', icon: ChartPie, href: '/' },
+  { name: 'dashboard', label: 'Dashboard', icon: ChartPie, href: '/dashboard' },
   {
-    name: 'subscriptions',
-    label: 'Subscriptions',
+    name: 'subscription',
+    label: 'Subscription',
     icon: CreditCard,
-    href: '/subscriptions',
+    href: '/subscription',
   },
   {
-    name: 'settings',
-    label: 'Settings',
+    name: 'setting',
+    label: 'Setting',
     icon: Settings,
-    href: '/settings',
+    href: '/setting',
   },
 ]
 

@@ -1,8 +1,12 @@
-import { useHeaderDescription } from '@pars/core/contexts/header/useHeader'
+import {
+  useHeaderAction,
+  useHeaderDescription,
+} from '@pars/core/contexts/header/useHeader'
 
-const Home = () => {
+const Dashboard = () => {
   // States
   useHeaderDescription('The Dashboard')
+  useHeaderAction(null)
 
   return (
     <div>
@@ -75,4 +79,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Dashboard

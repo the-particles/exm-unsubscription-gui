@@ -5,6 +5,7 @@ import {
 } from '@pars/core/contexts/header/useHeader'
 import { useTheme } from '@pars/core/contexts/theme/useTheme'
 import { ArrowRight, Palette, SettingsIcon, Trash } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -18,7 +19,10 @@ import {
 } from '@pars/shared/components/ui/alert-dialog'
 import SettingItem from './SettingItem'
 
-const Settings = () => {
+const Setting = () => {
+  // Navigation
+  const navigate = useNavigate()
+
   // States
   const { theme, setTheme } = useTheme()
   useHeaderDescription('The Settings')
@@ -100,7 +104,9 @@ const Settings = () => {
             Icon={SettingsIcon}
             title="Bottom Safe Area"
             rightContent={bottomInset}
-            onClick={() => {}}
+            onClick={() => {
+              navigate('/setting/details')
+            }}
           />
         </div>
       </div>
@@ -108,4 +114,4 @@ const Settings = () => {
   )
 }
 
-export default Settings
+export default Setting
