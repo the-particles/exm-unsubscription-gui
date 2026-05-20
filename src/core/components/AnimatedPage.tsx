@@ -32,7 +32,7 @@ const variants: Variants = {
 
 export default function AnimatedPage({
   children,
-  zIndex = 'z-10',
+  zIndex = 'z-50',
 }: {
   children: React.ReactNode
   zIndex?: string
@@ -54,7 +54,7 @@ export default function AnimatedPage({
       initial="initial"
       animate="animate"
       exit="exit"
-      className={`fixed top-0 left-0 p-5 pt-[calc(var(--safe-area-inset-top)+var(--spacing)*5)] z-100 flex flex-col gap-5 w-full h-full bg-background ${zIndex} shadow-[-10px_0_20px_rgba(0,0,0,0.05)]`}
+      className={`fixed top-0 left-0 p-5 pt-[calc(var(--safe-area-inset-top)+var(--spacing)*5)] translate-[translate3d(0,0,0)] flex flex-col gap-5 w-full h-full bg-background ${zIndex} shadow-[-10px_0_20px_rgba(0,0,0,0.05)]`}
     >
       <div>
         <ArrowLeft onClick={_onNavigateBack} />

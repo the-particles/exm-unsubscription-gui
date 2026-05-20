@@ -83,7 +83,7 @@ const NavigationBar = () => {
   return (
     <nav
       ref={navigationBarRef}
-      className="fixed bottom-0 left-0 w-full h-28 z-50 flex justify-between items-center p-5 navigation-bar"
+      className="fixed bottom-0 left-0 w-full h-28 z-30 translate-z-0 flex justify-between items-center p-5 navigation-bar"
     >
       <div className="bg-background/50 rounded-full flex justify-around items-center w-full py-3 border backdrop-blur-lg">
         {NAVIGATION_ITEMS.map((item) => (

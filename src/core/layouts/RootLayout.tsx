@@ -49,7 +49,7 @@ const RootLayout = () => {
   }, [])
 
   return (
-    <div className="relative flex flex-col items-center w-full h-dvh overflow-hidden select-none">
+    <div className="relative flex flex-col items-center w-full h-dvh overflow-hidden select-none isolate">
       <RefreshingPull />
 
       <Header ref={headerRef} />
