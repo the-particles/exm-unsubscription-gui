@@ -3,6 +3,7 @@ export const refreshPage = () => {
     window.location.reload()
   }
 }
+
 export const haptic = () => {
   if (navigator.vibrate) {
     navigator.vibrate([2000, 1000, 2000, 1000, 2000, 1000, 2000])
@@ -25,4 +26,11 @@ export const haptic = () => {
       element.remove()
     }, 1500)
   }
+}
+
+export function isIOS(): boolean {
+  return (
+    /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+  )
 }

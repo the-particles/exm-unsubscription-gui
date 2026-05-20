@@ -65,7 +65,7 @@ const RootLayout = () => {
               key={location.pathname}
               initial="initial"
               animate="animate"
-              // exit="exit"
+              exit="exit"
               custom={isBack}
               style={{
                 paddingBottom: `${navigationBarHeight + bottomInset + 20}px`,
