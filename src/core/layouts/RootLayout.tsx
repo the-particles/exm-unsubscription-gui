@@ -54,6 +54,8 @@ const RootLayout = () => {
 
       <Header ref={headerRef} />
 
+      <NavigationBar />
+
       <div className="w-full relative grow overflow-hidden">
         <ScrollArea
           style={{ height: `${scrollAreaHeight}px` }}
@@ -77,8 +79,6 @@ const RootLayout = () => {
           </AnimatePresence>
         </ScrollArea>
       </div>
-
-      <NavigationBar />
     </div>
   )
 }
