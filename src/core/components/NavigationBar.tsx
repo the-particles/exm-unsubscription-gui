@@ -40,7 +40,7 @@ const NavigationItem = ({
   // Functions
   const _onNavigate = () => {
     setCurrent(name)
-    navigate(href)
+    navigate(href, { replace: true })
   }
 
   return (
