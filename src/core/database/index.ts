@@ -19,7 +19,7 @@ export interface Category {
 }
 
 export interface Subscription {
-  id: number
+  id: string
   name: string
   categories?: Category[]
   provider?: Provider
@@ -39,7 +39,7 @@ export const database = new Dexie(DATABASE_NAME) as UnsubscriptionDatabase
 
 database.version(DATABASE_VERSION).stores({
   [SUBSCRIPTION_TABLE_NAME]:
-    '++id, name, amount, currency, cycle, date, categories, provider',
+    'id, name, amount, currency, cycle, date, categories, provider',
   [CATEGORY_TABLE_NAME]: '++id, name',
   [PROVIDER_TABLE_NAME]: '++id, name',
 })

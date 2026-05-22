@@ -23,7 +23,7 @@ export const subscriptionRoutes: RouteObject[] = [
         HydrateFallback: NavigationFallback,
       },
       {
-        path: 'details',
+        path: ':id',
         lazy: () =>
           import('./SubscriptionDetails').then((m) => ({
             Component: m.default,

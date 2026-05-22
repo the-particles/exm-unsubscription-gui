@@ -4,6 +4,7 @@ import NavigationProvider from '@pars/core/contexts/navigation/NavigationProvide
 import PWAProvider from '@pars/core/contexts/pwa/PWAProvider'
 import ThemeProvider from '@pars/core/contexts/theme/ThemeProvider'
 import { RouterProvider } from 'react-router-dom'
+import { Toaster } from '@pars/shared/components/ui/sonner'
 import router from './routes'
 
 const App = () => {
@@ -14,6 +15,7 @@ const App = () => {
           <ThemeProvider>
             <PWAProvider>
               <RouterProvider router={router} />
+              <Toaster />
             </PWAProvider>
           </ThemeProvider>
         </HeaderProvider>

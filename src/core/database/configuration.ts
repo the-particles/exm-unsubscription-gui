@@ -1,5 +1,5 @@
 export const DATABASE_NAME = 'unsubscription'
-export const DATABASE_VERSION = 1
+export const DATABASE_VERSION = 2
 
 export const SUBSCRIPTION_TABLE_NAME = 'subscriptions'
 export const CATEGORY_TABLE_NAME = 'categories'

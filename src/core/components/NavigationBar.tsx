@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useDimension } from '@pars/core/contexts/dimension/useDimension'
 import { useNavigation } from '@pars/core/contexts/navigation/useNavigation'
 import { ChartPie, CreditCard, Settings } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Button } from '@pars/shared/components/ui/button'
 import './NavigationBar.css'
 
@@ -61,8 +61,14 @@ const NavigationBar = () => {
   // Refs
   const navigationBarRef = useRef<HTMLDivElement>(null)
 
+  // Hooks
+  const location = useLocation()
+
   // Contexts
   const { setNavigationBarHeight } = useDimension()
+
+  // States
+  const isSubPage = location.pathname.split('/').filter(Boolean).length > 1
 
   // Effects
   useEffect(() => {
@@ -83,7 +89,11 @@ const NavigationBar = () => {
   return (
     <nav
       ref={navigationBarRef}
-      className="fixed bottom-0 left-0 w-full h-28 z-30 translate-z-0 flex justify-between items-center p-5 navigation-bar"
+      className={`fixed bottom-0 left-0 w-full h-28 z-30 translate-z-0 flex justify-between items-center p-5 navigation-bar transition-all duration-300 ease-in-out ${
+        isSubPage
+          ? 'translate-y-full opacity-0 pointer-events-none'
+          : 'translate-y-0 opacity-100'
+      }`}
     >
       <div className="bg-background/50 rounded-full flex justify-around items-center w-full py-3 border backdrop-blur-lg">
         {NAVIGATION_ITEMS.map((item) => (
