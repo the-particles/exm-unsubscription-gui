@@ -1,7 +1,8 @@
 import { ArrowLeft } from 'lucide-react'
 import { type Variants, motion } from 'motion/react'
+import { createPortal } from 'react-dom'
 import { useNavigate, useNavigationType } from 'react-router-dom'
-import { haptic, isIOS } from '../utils/document'
+import { haptic } from '../utils/document'
 
 const variants: Variants = {
   initial: (isBack: boolean) => ({
@@ -12,22 +13,19 @@ const variants: Variants = {
     transition: {
       type: 'spring',
       bounce: 0,
-      duration: 0.25,
+      duration: 0.4,
       ease: 'backOut',
     },
   },
-  exit: (isBack: boolean) =>
-    isIOS()
-      ? {}
-      : {
-          x: isBack ? '100%' : '-30%',
-          transition: {
-            type: 'spring',
-            bounce: 0,
-            duration: 0.25,
-            ease: 'backOut',
-          },
-        },
+  exit: (isBack: boolean) => ({
+    x: isBack ? '100%' : '-30%',
+    transition: {
+      type: 'spring',
+      bounce: 0,
+      duration: 0.4,
+      ease: 'backOut',
+    },
+  }),
 }
 
 export default function AnimatedPage({
@@ -47,7 +45,7 @@ export default function AnimatedPage({
     navigate(-1)
   }
 
-  return (
+  return createPortal(
     <motion.div
       custom={isBack}
       variants={variants}
@@ -60,6 +58,7 @@ export default function AnimatedPage({
         <ArrowLeft onClick={_onNavigateBack} />
       </div>
       <div>{children}</div>
-    </motion.div>
+    </motion.div>,
+    document.body,
   )
 }

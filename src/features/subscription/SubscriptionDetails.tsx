@@ -6,7 +6,7 @@ import { database } from '@pars/core/database'
 import { formatCurrency } from '@pars/core/utils/currency'
 import { haptic } from '@pars/core/utils/document'
 import { useLiveQuery } from 'dexie-react-hooks'
-import { ArrowLeft, Edit, Trash2, X } from 'lucide-react'
+import { Edit, Trash2, X } from 'lucide-react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'sonner'
 import {
@@ -67,9 +67,6 @@ const SubscriptionDetails = () => {
           <p className="text-sm text-foreground-muted">
             Subscription not found.
           </p>
-          <Button onClick={() => navigate('/subscription')}>
-            Back to Subscriptions
-          </Button>
         </div>
       </AnimatedPage>
     )
@@ -80,7 +77,7 @@ const SubscriptionDetails = () => {
       database.subscriptions.delete(id)
       toast.success(`Deleted subscription "${subscription.name}"`)
       haptic()
-      navigate('/subscription')
+      navigate(-1)
     }
   }
 
@@ -95,14 +92,6 @@ const SubscriptionDetails = () => {
   return (
     <AnimatedPage>
       <div className="w-full max-w-md mx-auto flex flex-col gap-4">
-        {/* Navigation back */}
-        <button
-          onClick={() => navigate('/subscription')}
-          className="flex items-center gap-2 text-xs font-semibold text-foreground-muted hover:text-foreground self-start transition-colors cursor-pointer"
-        >
-          <ArrowLeft size={14} /> Back to Subscriptions
-        </button>
-
         {isEditing ? (
           <SubscriptionEditForm
             subscription={subscription}

@@ -81,6 +81,52 @@ const PWAProvider = ({ children }: ProviderProps) => {
     }
   }, [isReadyOffline])
 
+  // Prevent default swipe-to-go-back behavior on iOS PWA
+  // Should not override the behavior of iOS
+  // But nah, that's okay.
+  // It will not work 100%
+  useEffect(() => {
+    const isIOS =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
+    const isStandalone =
+      window.matchMedia('(display-mode: standalone)').matches ||
+      (window.navigator as Navigator).standalone === true
+
+    if (isIOS && isStandalone) {
+      const handleTouchStart = (e: TouchEvent) => {
+        const threshold = 20
+        const touch = e.touches[0]
+        if (!touch) return
+
+        const clientX = touch.clientX
+
+        // Check if touch starts near the screen margins (left or right edge)
+        if (clientX < threshold || clientX > window.innerWidth - threshold) {
+          const target = e.target as HTMLElement | null
+          if (target) {
+            // Do not prevent default if the user is interacting with form controls or buttons
+            const isInteractive =
+              target.closest(
+                'button, a, input, select, textarea, [role="button"]',
+              ) !== null || target.onclick !== null
+            if (isInteractive) {
+              return
+            }
+          }
+          e.preventDefault()
+        }
+      }
+
+      window.addEventListener('touchstart', handleTouchStart, {
+        passive: false,
+      })
+      return () => {
+        window.removeEventListener('touchstart', handleTouchStart)
+      }
+    }
+  }, [])
+
   // Functions
   const _skipWaiting = () => {
     if (newWorker) {

@@ -5,11 +5,12 @@ import { useDimension } from '@pars/core/contexts/dimension/useDimension'
 import { useHeader } from '@pars/core/contexts/header/useHeader'
 import { useNavigation } from '@pars/core/contexts/navigation/useNavigation'
 import { AnimatePresence, motion } from 'motion/react'
-import { useNavigationType, useOutlet } from 'react-router-dom'
+import { useLocation, useNavigationType, useOutlet } from 'react-router-dom'
 import { ScrollArea } from '@pars/shared/components/ui/scroll-area'
 
 const RootLayout = () => {
   // Navigation
+  const location = useLocation()
   const navigationType = useNavigationType()
   const outlet = useOutlet()
 
@@ -56,7 +57,7 @@ const RootLayout = () => {
 
       <NavigationBar />
 
-      <div className="w-full relative grow overflow-hidden">
+      <div className="w-full relative grow overflow-hidden z-10">
         <ScrollArea
           style={{ height: `${scrollAreaHeight}px` }}
           className="w-full relative"
